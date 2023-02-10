@@ -15,6 +15,8 @@
 namespace Wanted
 {
 
+struct Game;
+
 struct Menu {
     sf::Text score_title;
     ScoreBoard score_list;
@@ -24,11 +26,9 @@ struct Menu {
 
     Menu(utils::Utils &utils, ScoreBoardValue &scoreboard);
     void getEvent(utils::Utils &utils);
-    void doLogic(utils::Utils &utils, WantedPart &part);
+    void doLogic(Game &game, utils::Utils &utils, WantedPart &part);
     void draw(utils::Utils &utils);
     ~Menu();
 };
-
-void setScoreboard(ScoreBoardValue &values, size_t newValue, ScoreBoard &list);
 
 } // namespace menu

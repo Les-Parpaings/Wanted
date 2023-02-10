@@ -47,6 +47,7 @@
     // ************************************************************************
 
     #define PATH_SCOREBOARD             "assets/data/scores.txt"
+    #define PATH_HEROES                 "heroes/"
 
     // ************************************************************************
     // TYPEDEF
@@ -61,11 +62,32 @@
     #include <vector>
     #include <list>
 
-    typedef std::vector<size_t> ScoreBoardValue;
-    typedef std::list<sf::Text> ScoreBoard;
-
     // All Parts here
     enum WantedPart {
         PART_MENU,
         PART_GAME
     };
+
+    enum HeroType {
+        CAPTAIN,
+        DEADPOOL,
+        GROOT,
+        HULK,
+        IRONMAN,
+        SPIDERMAN,
+        THOR,
+        WOLVERINE,
+        HERO_SIZE,
+    };
+
+    enum RoundType {
+        LINE_COLS,
+        BORDEL,
+        MOVE_LINE_COLS,
+        MOVE_BORDEL
+    };
+
+    typedef std::vector<size_t>                 ScoreBoardValue;
+    typedef std::list<sf::Text>                 ScoreBoard;
+    typedef std::pair<sf::Sprite, HeroType>     Hero;
+    typedef std::list<Hero>                     HeroList;

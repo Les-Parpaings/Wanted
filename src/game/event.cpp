@@ -25,11 +25,34 @@ static bool pictureIsClicked(sf::Sprite &sprite, sf::Vector2f &posMouse)
 
 void Game::getEvent(Utils &utils)
 {
+    if (part != PART_GAME_IN_ROUND)
+        return;
+
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         sf::Vector2f posMouse(utils.window.mapPixelToCoords(sf::Mouse::getPosition(utils.window)));
-        for (auto &it : this->heads) {
-            if (pictureIsClicked(it, posMouse)) {
-                return;
+        bool touched = false;
+        bool clicked = false;
+
+        for (auto it = headList.begin(); it != headList.end(); it++) {
+            if (pictureIsClicked(it->first, posMouse)) {
+                clicked = true;
+                if (it == headChosen) {
+                    touched = true;
+                } else {
+                    touched = false;
+                }
+            }
+        }
+
+        if (clicked) {
+            if (touched) {
+                endRound();
+            } else {
+                if (time < 5)
+                    time = 0;
+                else
+                    time -= 5;
+                info.setTime(time);
             }
         }
     }

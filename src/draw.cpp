@@ -7,9 +7,15 @@ namespace Wanted
 
 void Game::draw(utils::Utils &utils)
 {
-    for (auto &it : heads) {
-        utils.window.draw(it);
+    if (part != PART_GAME_NEW_ROUND) {
+        for (auto &it : headList) {
+            utils.window.draw(it.first);
+        }
+    } else {
+        intro.draw(utils);
     }
+
+    info.draw(utils);
 }
 
 void Menu::draw(utils::Utils &utils)
@@ -24,7 +30,7 @@ void Menu::draw(utils::Utils &utils)
 
 void Wanted::draw()
 {
-    utils.clear(sf::Color::White);
+    utils.clear();
 
     switch (part) {
         case WantedPart::PART_MENU:

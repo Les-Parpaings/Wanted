@@ -15,6 +15,7 @@ Menu::~Menu()
 
 Wanted::~Wanted()
 {
+    saveScoreboard(this->scoreboard);
 }
 
 }

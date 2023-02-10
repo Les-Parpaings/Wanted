@@ -28,4 +28,10 @@ struct Wanted
     ~Wanted();
 };
 
+void setScoreboard(ScoreBoardValue &values, size_t newValue, ScoreBoard &list);
+ScoreBoardValue readScoreBoard();
+void saveScoreboard(ScoreBoardValue &values);
+
 }
+
+std::ostream &operator<<(std::ostream &flux, HeroType const &hero);

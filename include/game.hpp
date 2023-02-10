@@ -15,26 +15,80 @@
 namespace Wanted
 {
 
-enum HerosType {
-    Captain,
-    DeadPool,
-    Groot,
-    Hulk,
-    IronMan,
-    SpiderMain,
-    Thor,
-    Wolverine,
-    Size,
+enum GamePart {
+    PART_GAME_NEW_ROUND,
+    PART_GAME_IN_ROUND,
+    PART_GAME_END_ROUND
 };
 
-struct Game {
+struct GameIntro
+{
+    sf::Text chosenTitle;
+    sf::Sprite chosenSprite;
 
-    std::list<sf::Sprite> heads;
-    std::string herosList [HerosType::Size];
+    GameIntro(utils::Utils &utils);
+    void draw(utils::Utils &utils);
+    void setSprite(sf::Texture &newTexture);
+    ~GameIntro();
+};
+
+struct GameInfo
+{
+    sf::Sprite background;
+
+    sf::Text chosenTitle;
+    sf::Sprite chosenSprite;
+
+    sf::Text timeTitle;
+    sf::Text timeText;
+
+    sf::Text scoreTitle;
+    sf::Text scoreText;
+
+    sf::Text roundTitle;
+    sf::Text roundText;
+
+    GameInfo(utils::Utils &utils);
+    void draw(utils::Utils &utils);
+    void setSprite(sf::Texture &newTexture);
+    void setTime(size_t newTime);
+    void setScore(size_t newScore);
+    void setRound(size_t newRound);
+    ~GameInfo();
+};
+
+struct Game
+{
+    GameInfo info;
+    GameIntro intro;
+
+    HeroList headList;
+    HeroList::iterator headChosen;
+    std::string nameList[HeroType::HERO_SIZE];
+    HeroType nameChosen;
+
+    size_t round;
+    RoundType roundType;
+
+    size_t score;
+
+    size_t time;
+    sf::Clock timeGame;
+    sf::Clock timeRound;
+    bool isEndGame;
+
+    GamePart part;
 
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);
-    void doLogic(utils::Utils &utils);
+
+    void doLogic(Menu &menu, utils::Utils &utils, WantedPart &part, ScoreBoardValue &scoreboard);
+    void startNewRound(utils::Utils &utils);
+    void endRound();
+    void startNewGame(utils::Utils &utils);
+    void endGame(ScoreBoardValue &values, ScoreBoard &list);
+    void doMovement();
+
     void draw(utils::Utils &utils);
     ~Game();
 };

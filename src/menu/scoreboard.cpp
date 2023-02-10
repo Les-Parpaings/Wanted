@@ -23,4 +23,25 @@ void setScoreboard(ScoreBoardValue &values, size_t newValue, ScoreBoard &list)
     }
 }
 
+ScoreBoardValue readScoreBoard()
+{
+    ScoreBoardValue content;
+    std::ifstream file(PATH_SCOREBOARD);
+    std::string buffer;
+
+    while (getline(file, buffer))
+        content.push_back(std::stoi(buffer));
+    file.close();
+    return content;
+}
+
+void saveScoreboard(ScoreBoardValue &values)
+{
+    std::ofstream file(PATH_SCOREBOARD, std::ios::trunc);
+
+    for (auto &it : values)
+        file << it << std::endl;
+    file.close();
+}
+
 }

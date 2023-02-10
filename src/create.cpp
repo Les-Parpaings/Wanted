@@ -1,34 +1,34 @@
 
 #include "Wanted.hpp"
 #include <fstream>
+#include <cstring>
 
 using namespace utils;
 namespace Wanted
 {
 
-Game::Game(Utils &utils)
+Game::Game(Utils &utils) :
+    info(utils),
+    intro(utils)
 {
     auto map = utils.textures.getMap();
     size_t index = 0;
-    size_t x = 0;
-    size_t y = 0;
 
-    for (auto it = map.begin(); it != map.end(); it++) {
-
-        if (it->first == "none")
+    for (auto &it : map) {
+        if (it.first.find(PATH_HEROES) == std::string::npos)
             continue;
 
-        herosList[index] = it->first;
-
-        heads.push_back(sf::Sprite());
-        newSprite(*heads.end().operator--(), utils.textures.getTexture(it->first), R_HERO, sf::Vector2f(256.0f + 196.0f * x, 360.0f + 196.0f * y));
-
-        x++;
-        if (x % 4 == 0 && x != 0) {
-            x = 0;
-            y++;
-        }
+        std::string name = it.first;
+        name.erase(0, strlen(PATH_HEROES));
+        nameList[index] = name;
+        index++;
     }
+
+    this->time = 0;
+    this->score = 0;
+    this->round = 0;
+
+    this->isEndGame = false;
 }
 
 Menu::Menu(Utils &utils, ScoreBoardValue &scoreboard)
@@ -41,18 +41,6 @@ Menu::Menu(Utils &utils, ScoreBoardValue &scoreboard)
         score_list.push_back(sf::Text());
         newText(*score_list.end().operator--(), FONT_REGULAR, std::to_string(scoreboard[i]), 50, sf::Vector2f(960.0f, 250.0f + i * 50.0f));
     }
-}
-
-ScoreBoardValue readScoreBoard()
-{
-    ScoreBoardValue content;
-    std::ifstream file(PATH_SCOREBOARD);
-    std::string buffer;
-
-    while (getline(file, buffer))
-        content.push_back(std::stoi(buffer));
-    file.close();
-    return content;
 }
 
 Wanted::Wanted() :

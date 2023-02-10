@@ -9,10 +9,10 @@ void Wanted::doLogic()
 {
     switch (part) {
         case WantedPart::PART_MENU:
-            menu.doLogic(utils, part);
+            menu.doLogic(game, utils, part);
             break;
         case WantedPart::PART_GAME:
-            game.doLogic(utils);
+            game.doLogic(menu, utils, part, scoreboard);
             break;
     }
 }

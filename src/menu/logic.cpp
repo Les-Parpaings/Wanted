@@ -5,12 +5,14 @@ using namespace utils;
 namespace Wanted
 {
 
-void Menu::doLogic(Utils &utils, WantedPart &part)
+void Menu::doLogic(Game &game, Utils &utils, WantedPart &part)
 {
     if (quit.isClicked())
         utils.window.close();
-    if (start.isClicked())
+    if (start.isClicked()) {
         part = PART_GAME;
+        game.startNewGame(utils);
+    }
 }
 
 }
