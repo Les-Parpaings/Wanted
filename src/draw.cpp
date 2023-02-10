@@ -7,8 +7,9 @@ namespace Wanted
 
 void Game::draw(utils::Utils &utils)
 {
-    for (auto &it : heads)
+    for (auto &it : heads) {
         utils.window.draw(it);
+    }
 }
 
 void Menu::draw(utils::Utils &utils)
@@ -23,7 +24,7 @@ void Menu::draw(utils::Utils &utils)
 
 void Wanted::draw()
 {
-    utils.clear();
+    utils.clear(sf::Color::White);
 
     switch (part) {
         case WantedPart::PART_MENU:

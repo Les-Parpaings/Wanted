@@ -9,12 +9,16 @@ namespace Wanted
 Game::Game(Utils &utils)
 {
     auto map = utils.textures.getMap();
-    size_t x;
-    size_t y;
+    size_t x = 0;
+    size_t y = 0;
 
-    for (auto &it : map) {
+    for (auto it = map.begin(); it != map.end(); it++) {
+
+        if (it->first == "none")
+            continue;
+
         heads.push_back(sf::Sprite());
-        newSprite(*heads.end().operator--(), it.second, R_HERO, sf::Vector2f(256.0f + 196.0f * x, 360.0f + 196.0f * y), VECTOR_0_50);
+        newSprite(*heads.end().operator--(), utils.textures.getTexture(it->first), R_HERO, sf::Vector2f(256.0f + 196.0f * x, 360.0f + 196.0f * y));
 
         x++;
         if (x % 4 == 0 && x != 0) {
