@@ -5,9 +5,16 @@
     // IMAGE
     // ************************************************************************
 
-    #define I_BUTTON                    utils.textures.getTexture("button")
-    #define R_BUTTON                    sf::IntRect(0, 0, 400, 400)
-    #define IR_BUTTON                   utils::ButtonRect{0, 0, 0}
+    #define I_CAPTAIN                   utils.textures.getTexture("captain")
+    #define I_DEADPOOL                  utils.textures.getTexture("deadpool")
+    #define I_GROOT                     utils.textures.getTexture("groot")
+    #define I_HULK                      utils.textures.getTexture("hulk")
+    #define I_IRONMAN                   utils.textures.getTexture("ironman")
+    #define I_SPIDERMAN                 utils.textures.getTexture("spiderman")
+    #define I_THOR                      utils.textures.getTexture("thor")
+    #define I_WOLVERINE                 utils.textures.getTexture("wolverine")
+
+    #define R_HERO                      sf::IntRect(0, 0, 128, 128)
 
     // ************************************************************************
     // FONT

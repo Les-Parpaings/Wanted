@@ -24,7 +24,7 @@ struct Menu {
 
     Menu(utils::Utils &utils, ScoreBoardValue &scoreboard);
     void getEvent(utils::Utils &utils);
-    void doLogic(utils::Utils &utils);
+    void doLogic(utils::Utils &utils, WantedPart &part);
     void draw(utils::Utils &utils);
     ~Menu();
 };
