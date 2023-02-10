@@ -7,6 +7,8 @@ namespace Wanted
 
 void Game::draw(utils::Utils &utils)
 {
+    for (auto &it : heads)
+        utils.window.draw(it);
 }
 
 void Menu::draw(utils::Utils &utils)

@@ -9,7 +9,7 @@
     #include <list>
 
     #include "utils/utils.hpp"
-    #include "app.hpp"
+    #include "common.hpp"
 
 namespace Wanted
 {
