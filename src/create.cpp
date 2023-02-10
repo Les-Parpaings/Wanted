@@ -33,6 +33,9 @@ Menu::Menu(Utils &utils)
     // }
 
     // newText(text, FONT_BOLD, "Choisissez un personnage", 100, sf::Vector2f(960.0f, 100.0f));
+
+    this->start.create(FONT_BOLD, "Start", 50, BUTTON_COLOR_CLASSIC, sf::Vector2f(960.0f, 860.0f), FADE_DONE, true);
+    this->quit.create(FONT_BOLD, "Quit", 50, BUTTON_COLOR_CLASSIC, sf::Vector2f(960.0f, 960.0f), FADE_DONE, true);
 }
 
 Wanted::Wanted() :
