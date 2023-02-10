@@ -1,8 +1,28 @@
-# Compiled Object files
+# Files
+*.d
 *.o
-*.obj
+
+# Libraries
+*.so
+*.a
 
 # Executables
-*.exe
 *.out
 *.app
+
+# Binary
+template
+Wanted
+
+# Tests
+*.gcda
+*.gcno
+unit_tests
+main*
+
+# Valgrind
+vgcore.*
+report.txt*
+
+# VS Code
+.vscode
