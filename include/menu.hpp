@@ -16,15 +16,19 @@ namespace Wanted
 {
 
 struct Menu {
-    std::list<sf::Text> scores;
+    sf::Text score_title;
+    ScoreBoard score_list;
+
     utils::ButtonClick start;
     utils::ButtonClick quit;
 
-    Menu(utils::Utils &utils);
+    Menu(utils::Utils &utils, ScoreBoardValue &scoreboard);
     void getEvent(utils::Utils &utils);
-    void doLogic();
+    void doLogic(utils::Utils &utils);
     void draw(utils::Utils &utils);
     ~Menu();
 };
+
+void setScoreboard(ScoreBoardValue &values, size_t newValue, ScoreBoard &list);
 
 } // namespace menu

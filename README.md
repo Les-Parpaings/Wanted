@@ -1,6 +1,4 @@
-:D
-
-SUPER-HEROS
+# SUPER-HEROS
 
 Contrainte
 * inter promo

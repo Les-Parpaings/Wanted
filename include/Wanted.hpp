@@ -2,7 +2,7 @@
 #pragma once
 
     #include <iostream>
-    #include <list>
+    #include <vector>
 
     #include "utils/utils.hpp"
     #include "app.hpp"
@@ -22,6 +22,7 @@ struct Wanted
 {
     utils::Utils utils;
     WantedPart part;
+    ScoreBoardValue scoreboard;
 
     Menu menu;
     Game game;
