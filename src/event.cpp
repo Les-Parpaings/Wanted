@@ -9,14 +9,14 @@ void Game::getEvent(Utils &utils)
 {
 }
 
-void Menu::getEvent(Utils &utils)
-{
-}
-
 void Wanted::getEvent()
 {
     while (utils.window.pollEvent(utils.event)) {
         utils.getExitEvent();
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            setScoreboard(this->scoreboard, getRandom(10000), this->menu.score_list);
+        }
 
         switch (part) {
             case WantedPart::PART_MENU:

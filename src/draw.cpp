@@ -11,6 +11,12 @@ void Game::draw(utils::Utils &utils)
 
 void Menu::draw(utils::Utils &utils)
 {
+    start.draw(utils.window);
+    quit.draw(utils.window);
+
+    utils.window.draw(score_title);
+    for (auto &it : score_list)
+        utils.window.draw(it);
 }
 
 void Wanted::draw()

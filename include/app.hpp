@@ -39,5 +39,11 @@
     // DATA
     // ************************************************************************
 
-    // #define PATH_EXAMPLE             "assets\\data\\dir\\file.txt"
-    // #define DIR_EXAMPLE              "assets\\data\\dir\\"
+    #define PATH_SCOREBOARD             "assets/data/scores.txt"
+
+    // ************************************************************************
+    // TYPEDEF
+    // ************************************************************************
+
+    typedef std::vector<size_t> ScoreBoardValue;
+    typedef std::list<sf::Text> ScoreBoard;
