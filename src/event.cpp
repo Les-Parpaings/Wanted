@@ -5,10 +5,6 @@ using namespace utils;
 namespace Wanted
 {
 
-void Game::getEvent(Utils &utils)
-{
-}
-
 void Wanted::getEvent()
 {
     while (utils.window.pollEvent(utils.event)) {

@@ -19,7 +19,7 @@ struct Game {
 
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);
-    void doLogic();
+    void doLogic(utils::Utils &utils);
     void draw(utils::Utils &utils);
     ~Game();
 };
