@@ -15,7 +15,6 @@ static bool pictureIsClicked(sf::Sprite &sprite, sf::Vector2f &posMouse)
 
         auto image = sprite.getTexture()->copyToImage();
         posMouse -= sf::Vector2f(rect.left, rect.top);
-        printVector(posMouse);
 
         if (image.getPixel(posMouse.x, posMouse.y).a > 0) {
             ret = true;

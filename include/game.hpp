@@ -15,9 +15,22 @@
 namespace Wanted
 {
 
+enum HerosType {
+    Captain,
+    DeadPool,
+    Groot,
+    Hulk,
+    IronMan,
+    SpiderMain,
+    Thor,
+    Wolverine,
+    Size,
+};
+
 struct Game {
 
     std::list<sf::Sprite> heads;
+    std::string herosList [HerosType::Size];
 
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);

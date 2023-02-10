@@ -7,6 +7,7 @@ namespace Wanted
 
 void Game::doLogic(Utils &utils)
 {
+
 }
 
 }

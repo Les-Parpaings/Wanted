@@ -9,6 +9,7 @@ namespace Wanted
 Game::Game(Utils &utils)
 {
     auto map = utils.textures.getMap();
+    size_t index = 0;
     size_t x = 0;
     size_t y = 0;
 
@@ -16,6 +17,8 @@ Game::Game(Utils &utils)
 
         if (it->first == "none")
             continue;
+
+        herosList[index] = it->first;
 
         heads.push_back(sf::Sprite());
         newSprite(*heads.end().operator--(), utils.textures.getTexture(it->first), R_HERO, sf::Vector2f(256.0f + 196.0f * x, 360.0f + 196.0f * y));
