@@ -8,6 +8,14 @@ namespace Wanted
 
 Game::Game(Utils &utils)
 {
+    // auto map = utils.textures.getMap();
+
+    // for (auto &it : map) {
+    //     heads.push_back(sf::Sprite());
+    //     newSprite(*heads.end().operator--(), it.second, R_HERO, sf::Vector2f())
+    // }
+
+    // this->heads
 }
 
 Menu::Menu(Utils &utils, ScoreBoardValue &scoreboard)

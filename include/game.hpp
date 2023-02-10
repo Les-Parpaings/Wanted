@@ -16,6 +16,8 @@ namespace Wanted
 
 struct Game {
 
+    std::list<sf::Sprite> heads;
+
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);
     void doLogic(utils::Utils &utils);
