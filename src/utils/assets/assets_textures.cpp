@@ -56,4 +56,9 @@ sf::Texture &Textures::getTexture(std::string name)
     }
 }
 
+std::map<std::string, sf::Texture> &Textures::getMap()
+{
+    return m_texture;
+}
+
 }

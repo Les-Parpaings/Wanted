@@ -13,9 +13,9 @@ Transition::Transition()
     image.create(1920, 1080);
     texture.loadFromImage(image);
     sprite.setTexture(texture);
-    sprite.setColor(sf::Color(0, 0, 0, 255));
+    sprite.setColor(sf::Color(0, 0, 0, 0));
 
-    value = FADE_DONE;
+    value = FADE_OFF;
 }
 
 Transition::~Transition()

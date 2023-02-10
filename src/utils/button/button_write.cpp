@@ -117,7 +117,7 @@ void ButtonWrite::getEventMouse(sf::RenderWindow &window, sf::View &view)
     ButtonRect rect;
 
     this->getRectColor(rect);
-    this->getMousePosition(window, rect, text_color);
+    this->getMousePosition(window, view, rect, text_color);
     this->getEventWrite();
 }
 

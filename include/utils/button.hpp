@@ -79,7 +79,7 @@ class Button
         sf::Text *text;
         ButtonColor text_color;
 
-        void getEventButton(sf::RenderWindow &window, sf::Vector2f pos, ButtonRect s_rect, ButtonColor t_color);
+        void getEventButton(sf::Vector2f pos, ButtonRect s_rect, ButtonColor t_color);
 };
 
 class ButtonClick : public Button
@@ -141,13 +141,13 @@ class ButtonOnOff : public Button
     public:
         ButtonOnOff();
         ButtonOnOff(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Vector2f pos, bool activated);
-        ButtonOnOff(sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated);
-        ButtonOnOff(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated);
+        ButtonOnOff(sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated);
+        ButtonOnOff(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated);
         virtual ~ButtonOnOff();
 
         void create(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Vector2f pos, bool activated);
-        void create(sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated);
-        void create(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated);
+        void create(sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated);
+        void create(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated);
 
         void getEvent(sf::RenderWindow &window, int *len = nullptr);
         void getEvent(sf::RenderWindow &window, sf::View &view, int *len = nullptr);
@@ -161,7 +161,7 @@ class ButtonOnOff : public Button
         sf::String off;
 
         void getRectColor(ButtonRect &rect, ButtonColor &color);
-        void getEventOnOff(sf::RenderWindow &window, int *len = nullptr);
+        void getEventOnOff(int *len = nullptr);
 };
 
     #define WRITE_DELETE          8
@@ -224,9 +224,9 @@ class ButtonWrite : public Button
         void getEventWrite();
 };
 
-using ButtonClickList   =   std::list<ButtonClick>;
-using ButtonIconList    =   std::list<ButtonIcon>;
-using ButtonOnOffList   =   std::list<ButtonOnOff>;
-using ButtonWriteList   =   std::list<ButtonWrite>;
+typedef std::list<ButtonClick>      ButtonClickList;
+typedef std::list<ButtonIcon>       ButtonIconList;
+typedef std::list<ButtonOnOff>      ButtonOnOffList;
+typedef std::list<ButtonWrite>      ButtonWriteList;
 
 }; // namespace utils

@@ -5,14 +5,17 @@
     // IMAGE
     // ************************************************************************
 
-    // #define I_EXAMPLE                utils.textures.getTexture("dir\\image")
-    // #define R_EXAMPLE                sf::IntRect( 0, 0, 100, 100)
+    #define I_BUTTON                    utils.textures.getTexture("button")
+    #define R_BUTTON                    sf::IntRect(0, 0, 400, 400)
+    #define IR_BUTTON                   utils::ButtonRect{0, 0, 0}
 
     // ************************************************************************
     // FONT
     // ************************************************************************
 
-    // #define FONT_EXAMPLE             utils.fonts.getFont("dir\\font")
+    #define FONT_REGULAR                utils.fonts.getFont("ubuntu_regular")
+    #define FONT_BOLD                   utils.fonts.getFont("ubuntu_bold")
+    #define FONT_LIGHT                  utils.fonts.getFont("ubuntu_light")
 
     // ************************************************************************
     // SOUND

@@ -17,8 +17,6 @@ TransitionCircle::TransitionCircle()
     circle.setPosition(sf::Vector2f(WINDOW_SIZE.width / 2.0f, WINDOW_SIZE.height / 2.0f));
     circle.setOrigin(sf::Vector2f(circle.getLocalBounds().left + circle.getLocalBounds().width / 2.0f, circle.getLocalBounds().top + circle.getLocalBounds().height / 2.0f));
     circle.setPointCount(100);
-
-    value = FADE_OFF;
 }
 
 TransitionCircle::~TransitionCircle()

@@ -38,6 +38,8 @@ class Textures
         /// \return non const sf::Texture
         sf::Texture &getTexture(std::string name);
 
+        std::map<std::string, sf::Texture> &getMap();
+
         ~Textures();
 
     private:

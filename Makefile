@@ -5,31 +5,30 @@
 ## Makefile
 ##
 
-# Compilation Settings
-CC			:=		g++
-FLAGS		:=		-std=c++17 -Wall -g
-VALG		:=		valgrind --leak-check=full --log-file=report.txt
+# Compilation
+CXX			:=		g++ -g
+FLAGS		:=		-std=c++17 -Wall -Wextra
 SFML		:=		-lsfml-graphics -lsfml-audio -lsfml-system -lsfml-window -lsfml-network
 
-# Binary File Settings
-BINDIR		:=		bin
-BINEXT		:=		app
-BINNAME		:=		template
-BIN			:=		$(BINDIR)/$(BINNAME).$(BINEXT)
+# Binary
+BINDIR		:=		.
+BINNAME		:=		Wanted
+BIN			:=		$(BINDIR)/$(BINNAME)
 
-# Source Files Settings
+# Source
 SRCDIR		:=		src
 SRCEXT		:=		cpp
 SRC			:=		$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 
-# Objects Files Settings
+# Objects
 OBJDIR		:=		obj
 OBJEXT		:=		o
-OBJ			:=		$(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.$(OBJEXT)))
+OBJ			:=		\
+$(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRC:.$(SRCEXT)=.$(OBJEXT)))
 
-# Dependencies Settings
-LIB			:=		lib
-INCLUDE		:=		include
+# Library / Include
+LIB			:=		-L./lib/
+INC			:=		-I./include/
 
 # Command Settings
 RM			:=		rm -rf
@@ -42,61 +41,41 @@ BLUE		:=		\033[1;34m
 MAGENTA		:=		\033[1;35m
 CYAN		:=		\033[1;36m
 NC			:=		\033[0m
-TEXT		:=		$(GREEN)➜$(NC)  $(CYAN)Root$(BLUE)
-INTRO		:=		$(YELLOW)================================================================$(NC)\n
+LINE			:=		\n================================================\n
+INTRO_SUCCES	:=		$(GREEN)➜$(NC)
+INTRO_FAILED	:=		$(RED)➜$(NC)
 
-.PHONY:		all	clean	fclean	re	compil	valgrind	remove_windows	directories
-.SILENT:	all	$(OBJ)	$(BIN)	clean	fclean	re	compil	valgrind	remove_windows	directories
+.PHONY:		all	clean	fclean	re
+.SILENT:	all	$(OBJ)	$(BIN)	clean	fclean	re
 
 all:	$(BIN)
 
 # Compiled all .c file not compiled in .o
 $(OBJ): $(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	mkdir -p $(dir $@)
-	$(CC) $(FLAGS) -I$(INCLUDE) -c -o $@ $<
-	printf "$(TEXT) file $(RED)$@$(BLUE) created$(NC)\n"
+	$(CXX) $(FLAGS) $(INC) -c -o $@ $< $(SFML) \
+	&& printf "$(GREEN)➜  $(BLUE)file $(CYAN)$@ $(GREEN)created$(NC)\n" \
+	|| printf "$(RED)➜  $(BLUE)file $(CYAN)$@ $(RED)failed$(NC)\n"
 
 # Compiled project with lib and all .o files
 $(BIN):	$(OBJ)
-	$(CC) $(FLAGS) -I$(INCLUDE) -o $@ $^ $(SFML)
-	printf "\n$(INTRO)$(YELLOW) · Compilation Succesfully Finished$(NC)\n$(INTRO)\n"
+	$(CXX) $(FLAGS) $(INC) -o $@ $^ $(SFML) \
+	&& printf "$(YELLOW)$(LINE) · Compilation Done$(LINE)$(NC)\n" \
+	|| printf "$(RED)$(LINE) · Compilation Failed$(LINE)$(NC)\n"
 
 # Removes all .o files
 clean:
-	find $(OBJDIR) -type f -name *.$(OBJEXT) -exec printf "$(TEXT) file $(RED){}$(BLUE) removed$(NC)\n" \;
+	find $(OBJDIR) -type f -name *.$(OBJEXT) \
+	-exec printf "$(GREEN)➜  $(BLUE)file $(CYAN){} $(BLUE)removed$(NC)\n" \;
 	$(RM) $(OBJDIR)/*
 
 # Removes all useless files, binary and library
 fclean:	clean
-	find $(BINDIR) -type f -name *.$(BINEXT) -exec printf "$(TEXT) binary $(RED){}$(BLUE) removed$(NC)\n" \;
+	find $(BINDIR) -type f -name $(BINNAME) \
+	-exec printf "$(GREEN)➜  $(BLUE)binary $(CYAN){} $(BLUE)removed$(NC)\n" \;
 	$(RM) $(BIN)
-	$(RM) report.txt
 	$(RM) vgcore.*
-	$(RM) report.txt.core.*
+	$(RM) report.*
 
 # Clean all and compile the project
 re:	fclean all
-
-# Recompile and Start the project
-compil:	re
-	./$(BIN)
-
-# Start the project with valgrind in a report file
-valgrind:
-	$(VALG) ./$(BIN)
-
-# Create all folder needed by the compilation
-directories:
-	mkdir -p $(BINDIR)
-	mkdir -p $(SRCDIR)
-	mkdir -p $(OBJDIR)
-	mkdir -p $(LIB)
-	mkdir -p $(INCLUDE)
-
-# Remove useless file used by windows
-remove_windows:
-	$(RM) bin/*
-	$(RM) lib/*
-	$(RM) include/SFML
-	$(RM) Template.vcxproj*
-	printf "$(TEXT) Windows files has been removed$(NC)\n"

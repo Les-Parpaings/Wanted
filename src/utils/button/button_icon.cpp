@@ -42,16 +42,9 @@ ButtonIcon::~ButtonIcon()
 
 void ButtonIcon::draw(sf::RenderWindow &window, const sf::RenderStates &states)
 {
-    sf::RenderStates renderStates;
-    if (hover) {
-        renderStates = states;
-    } else {
-        renderStates = sf::RenderStates::Default;
-    }
-
-    window.draw(*sprite, renderStates);
-    window.draw(icon, renderStates);
-    window.draw(*text, renderStates);
+    window.draw(*sprite, states);
+    window.draw(icon, states);
+    window.draw(*text, states);
 
     if (hover && Utils::cursor_type == sf::Cursor::Type::Arrow)
         Utils::cursor_type = cursor;

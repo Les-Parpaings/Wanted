@@ -30,12 +30,12 @@ void ButtonOnOff::create(sf::Texture &texture, sf::IntRect rect, ButtonRect spri
     }
 }
 
-ButtonOnOff::ButtonOnOff(sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated)
+ButtonOnOff::ButtonOnOff(sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated)
 {
-    create(font, str, size, text_info, pos, activated);
+    create(font, str, size, pos, activated);
 }
 
-void ButtonOnOff::create(sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated)
+void ButtonOnOff::create(sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated)
 {
     this->activated = activated;
 
@@ -49,12 +49,12 @@ void ButtonOnOff::create(sf::Font &font, sf::String str, int size, ButtonColor t
     text->setFillColor(text_color.idle);
 }
 
-ButtonOnOff::ButtonOnOff(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated)
+ButtonOnOff::ButtonOnOff(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated)
 {
-    create(texture, rect, sprite_info, font, str, size, text_info, pos, activated);
+    create(texture, rect, sprite_info, font, str, size, pos, activated);
 }
 
-void ButtonOnOff::create(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool activated)
+void ButtonOnOff::create(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, sf::Vector2f pos, bool activated)
 {
     this->activated = activated;
 
@@ -111,7 +111,7 @@ void ButtonOnOff::getEvent(sf::RenderWindow &window, int *len)
 
     this->getRectColor(rect, color);
     this->getMousePosition(window, rect, color);
-    this->getEventOnOff(window, len);
+    this->getEventOnOff(len);
 }
 
 void ButtonOnOff::getEvent(sf::RenderWindow &window, sf::View &view, int *len)
@@ -121,10 +121,10 @@ void ButtonOnOff::getEvent(sf::RenderWindow &window, sf::View &view, int *len)
 
     this->getRectColor(rect, color);
     this->getMousePosition(window, view, rect, color);
-    this->getEventOnOff(window, len);
+    this->getEventOnOff(len);
 }
 
-void ButtonOnOff::getEventOnOff(sf::RenderWindow &window, int *len)
+void ButtonOnOff::getEventOnOff(int *len)
 {
     if (hold)
         return;

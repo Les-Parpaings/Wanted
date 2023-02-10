@@ -57,16 +57,16 @@ void Button::draw(sf::RenderWindow &window, const sf::RenderStates &states)
 void Button::getMousePosition(sf::RenderWindow &window, sf::View &view, ButtonRect s_rect, ButtonColor t_color)
 {
     sf::Vector2f pos(window.mapPixelToCoords(sf::Mouse::getPosition(window), view));
-    this->getEventButton(window, pos, s_rect, t_color);
+    this->getEventButton(pos, s_rect, t_color);
 }
 
 void Button::getMousePosition(sf::RenderWindow &window, ButtonRect s_rect, ButtonColor t_color)
 {
     sf::Vector2f pos(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-    this->getEventButton(window, pos, s_rect, t_color);
+    this->getEventButton(pos, s_rect, t_color);
 }
 
-void Button::getEventButton(sf::RenderWindow &window, sf::Vector2f pos, ButtonRect s_rect, ButtonColor t_color)
+void Button::getEventButton(sf::Vector2f pos, ButtonRect s_rect, ButtonColor t_color)
 {
     auto button = sf::Mouse::Button::Left;
     if (sf::Mouse::isButtonPressed(button) && this->click == true) {
