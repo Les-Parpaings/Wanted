@@ -5,18 +5,12 @@
     #include <vector>
 
     #include "utils/utils.hpp"
-    #include "app.hpp"
+    #include "common.hpp"
     #include "menu.hpp"
     #include "game.hpp"
 
 namespace Wanted
 {
-
-// All Parts here
-enum WantedPart {
-    PART_MENU,
-    PART_GAME
-};
 
 struct Wanted
 {

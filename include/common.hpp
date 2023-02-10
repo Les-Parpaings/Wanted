@@ -52,5 +52,20 @@
     // TYPEDEF
     // ************************************************************************
 
+    #include <SFML/Graphics.hpp>
+    #include <SFML/System.hpp>
+    #include <SFML/Audio.hpp>
+    #include <SFML/Window.hpp>
+
+    #include <iostream>
+    #include <vector>
+    #include <list>
+
     typedef std::vector<size_t> ScoreBoardValue;
     typedef std::list<sf::Text> ScoreBoard;
+
+    // All Parts here
+    enum WantedPart {
+        PART_MENU,
+        PART_GAME
+    };
