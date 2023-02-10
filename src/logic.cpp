@@ -5,10 +5,6 @@ using namespace utils;
 namespace Wanted
 {
 
-void Game::doLogic()
-{
-}
-
 void Wanted::doLogic()
 {
     switch (part) {
@@ -16,7 +12,7 @@ void Wanted::doLogic()
             menu.doLogic(utils);
             break;
         case WantedPart::PART_GAME:
-            game.doLogic();
+            game.doLogic(utils);
             break;
     }
 }
