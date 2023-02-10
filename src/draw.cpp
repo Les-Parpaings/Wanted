@@ -7,8 +7,8 @@ namespace Wanted
 
 void Game::draw(utils::Utils &utils)
 {
-    for (auto &it : heads)
-        utils.window.draw(it);
+    int new_heros_index = getRandomInRange<int>(0, (HerosType::Size - 1));
+    utils.textures.getTexture(herosList[new_heros_index]);
 }
 
 void Menu::draw(utils::Utils &utils)
