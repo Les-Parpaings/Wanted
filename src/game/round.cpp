@@ -146,7 +146,6 @@ void Game::startNewRound(Utils &utils)
     info.setRound(round);
 
     nameChosen = getRandom(HERO_SIZE);
-    std::cout << nameChosen << std::endl;
     func[roundType](this, utils);
     setHero(this, utils);
 
