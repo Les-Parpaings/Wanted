@@ -101,7 +101,7 @@ class Fonts
 
     ///\brief Extension uses for the sounds files
     ///\return std::string of the extension
-    #define EXT_SOUND           ".ogg"
+    #define EXT_SOUND           ".wav"
 
 /// \brief Class with the list of all sounds in DIR_SOUND
 class Sounds

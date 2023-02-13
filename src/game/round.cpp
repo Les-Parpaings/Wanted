@@ -19,8 +19,12 @@ Round 11-15
 Round 16-20
     Mouvement randoms
 
-Round 20+
-    Full random
+Round 21-25
+    sides
+
+Round 26-30
+    in the dark
+
 
 */
 
@@ -103,6 +107,66 @@ static void createRandomMovementRound(Game *var, Utils &utils)
     }
 }
 
+static void createSideRound(Game *var, Utils &utils)
+{
+    size_t side = getRandom(4);
+    size_t nbr = 0;
+    sf::Vector2f pos;
+
+    switch (side) {
+        case SIDE_UP:
+            pos = sf::Vector2f(60.0f, 0.0f);
+            nbr = 11;
+            break;
+        case SIDE_DOWN:
+            pos = sf::Vector2f(60.0f, 1080.0f);
+            nbr = 11;
+            break;
+        case SIDE_LEFT:
+            pos = sf::Vector2f(0.0f, 100.0f);
+            nbr = 7;
+            break;
+        case SIDE_RIGHT:
+            pos = sf::Vector2f(1620.0f, 100.0f);
+            nbr = 7;
+            break;
+    }
+
+    for (size_t i = 0; i < nbr; i++) {
+        addSpriteInList(var->headList, var->nameList, var->nameChosen, pos, utils);
+
+        if (side == SIDE_UP || side == SIDE_DOWN)
+            pos.x += 150.0f;
+        if (side == SIDE_LEFT || side == SIDE_RIGHT)
+            pos.y += 150.0f;
+    }
+}
+
+static void createDarkRound(Game *var, Utils &utils)
+{
+    const size_t size = 3;
+    size_t alea = getRandom(size);
+    void (*func[size])(Game *, Utils &) = {
+        createBordelRound,
+        createLineMovementRound,
+        createRandomMovementRound
+    };
+
+    var->dark = true;
+    func[alea](var, utils);
+    switch (alea) {
+        case 0:
+            var->roundType = RoundType::BORDEL;
+            break;
+        case 1:
+            var->roundType = RoundType::MOVE_LINE_COLS;
+            break;
+        case 2:
+            var->roundType = RoundType::MOVE_BORDEL;
+            break;
+    }
+}
+
 static void setHero(Game *var, Utils &utils)
 {
     size_t index = getRandom(var->headList.size());
@@ -121,15 +185,18 @@ void Game::startNewRound(Utils &utils)
 {
     part = PART_GAME_NEW_ROUND;
 
-    void (*func[4])(Game *, Utils &) = {
+    void (*func[6])(Game *, Utils &) = {
         createColLineRound,
         createBordelRound,
         createLineMovementRound,
-        createRandomMovementRound
+        createRandomMovementRound,
+        createSideRound,
+        createDarkRound
     };
 
     headList.clear();
     headChosen = headList.end();
+    dark = false;
 
     this->round++;
     if (round >= 1 && round <= 5) {
@@ -140,8 +207,12 @@ void Game::startNewRound(Utils &utils)
         roundType = RoundType::MOVE_LINE_COLS;
     } else if (round >= 16 && round <= 20) {
         roundType = RoundType::MOVE_BORDEL;
+    } else if (round >= 21 && round <= 25) {
+        roundType = RoundType::SIDE;
+    } else if (round >= 26 && round <= 30) {
+        roundType = RoundType::DARK;
     } else {
-        roundType = static_cast<RoundType>(getRandomInRange(1, 3));
+        roundType = static_cast<RoundType>(getRandomInRange(1, 5));
     }
     info.setRound(round);
 

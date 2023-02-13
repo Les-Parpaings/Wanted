@@ -69,6 +69,8 @@ struct Game
 
     size_t round;
     RoundType roundType;
+    bool dark;
+    sf::CircleShape darkCircle;
 
     size_t score;
 
@@ -78,6 +80,8 @@ struct Game
     bool isEndGame;
 
     GamePart part;
+
+    sf::Music music;
 
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);

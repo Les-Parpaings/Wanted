@@ -23,12 +23,15 @@ void Game::startNewGame(Utils &utils)
 
     this->isEndGame = false;
 
+    music.play();
+
     startNewRound(utils);
 }
 
 void Game::endGame(ScoreBoardValue &values, ScoreBoard &list)
 {
     this->isEndGame = true;
+    music.stop();
     endRound();
 
     setScoreboard(values, this->score, list);

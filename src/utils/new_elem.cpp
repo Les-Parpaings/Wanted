@@ -31,6 +31,8 @@ void newSprite(sf::Sprite &sprite, sf::Texture &texture, sf::IntRect rect, sf::V
 
 void newMusic(sf::Music &music, std::string path, bool loop, float volume, bool play)
 {
+    path = "assets/music/" + path + ".wav";
+
     music.openFromFile(path);
     music.setLoop(loop);
     music.setVolume(volume);

@@ -11,6 +11,9 @@ void Game::draw(utils::Utils &utils)
         for (auto &it : headList) {
             utils.window.draw(it.first);
         }
+        if (dark) {
+            utils.window.draw(darkCircle);
+        }
     } else {
         intro.draw(utils);
     }

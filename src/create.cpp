@@ -24,11 +24,20 @@ Game::Game(Utils &utils) :
         index++;
     }
 
+    this->dark = false;
+    this->darkCircle = sf::CircleShape(300, 20);
+    this->darkCircle.setFillColor(sf::Color::Transparent);
+    this->darkCircle.setOutlineThickness(1920.0f);
+    this->darkCircle.setOutlineColor(sf::Color::Black);
+    this->darkCircle.setOrigin(sf::Vector2f(this->darkCircle.getLocalBounds().left + this->darkCircle.getLocalBounds().width / 2.0f, this->darkCircle.getLocalBounds().top + this->darkCircle.getLocalBounds().height / 2.0f));
+
     this->time = 0;
     this->score = 0;
     this->round = 0;
 
     this->isEndGame = false;
+
+    newMusic(music, "in_game");
 }
 
 Menu::Menu(Utils &utils, ScoreBoardValue &scoreboard)
@@ -41,6 +50,8 @@ Menu::Menu(Utils &utils, ScoreBoardValue &scoreboard)
         score_list.push_back(sf::Text());
         newText(*score_list.end().operator--(), FONT_REGULAR, std::to_string(scoreboard[i]), 50, sf::Vector2f(960.0f, 250.0f + i * 50.0f));
     }
+
+    newMusic(music, "menu", true, 100.0f, true);
 }
 
 Wanted::Wanted() :

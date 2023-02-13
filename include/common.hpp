@@ -84,7 +84,16 @@
         LINE_COLS,
         BORDEL,
         MOVE_LINE_COLS,
-        MOVE_BORDEL
+        MOVE_BORDEL,
+        SIDE,
+        DARK
+    };
+
+    enum SideList {
+        SIDE_UP,
+        SIDE_DOWN,
+        SIDE_LEFT,
+        SIDE_RIGHT,
     };
 
     typedef std::vector<size_t>                 ScoreBoardValue;

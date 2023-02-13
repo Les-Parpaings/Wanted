@@ -24,6 +24,8 @@ struct Menu {
     utils::ButtonClick start;
     utils::ButtonClick quit;
 
+    sf::Music music;
+
     Menu(utils::Utils &utils, ScoreBoardValue &scoreboard);
     void getEvent(utils::Utils &utils);
     void doLogic(Game &game, utils::Utils &utils, WantedPart &part);

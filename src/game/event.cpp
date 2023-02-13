@@ -46,12 +46,16 @@ void Game::getEvent(Utils &utils)
 
         if (clicked) {
             if (touched) {
+                utils.sounds.play("good");
                 endRound();
             } else {
-                if (time < 5)
+                if (time < 5) {
+
                     time = 0;
-                else
+                } else {
                     time -= 5;
+                    utils.sounds.play("wrong");
+                }
                 info.setTime(time);
             }
         }
