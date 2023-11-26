@@ -7,7 +7,7 @@ int main(void)
 {
     Wanted::Wanted var;
 
-    while (var.utils.window.isOpen()) {
+    while (var.utils.loop()) {
         var.getEvent();
         var.doLogic();
         var.draw();

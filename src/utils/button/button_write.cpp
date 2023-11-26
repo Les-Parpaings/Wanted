@@ -12,8 +12,6 @@ ButtonWrite::ButtonWrite()
     activated = false;
     only_digit = false;
     str = "";
-
-    cursor = sf::Cursor::Type::Text;
 }
 
 ButtonWrite::ButtonWrite(sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool digit)
@@ -31,8 +29,6 @@ void ButtonWrite::create(sf::Font &font, sf::String str, int size, ButtonColor t
     newText(*text, font, this->str, size, pos);
     text_color = text_info;
     write_cursor.setPosition(text->getGlobalBounds());
-
-    cursor = sf::Cursor::Type::Text;
 }
 
 ButtonWrite::ButtonWrite(sf::Texture &texture, sf::IntRect rect, ButtonRect sprite_info, sf::Font &font, sf::String str, int size, ButtonColor text_info, sf::Vector2f pos, bool digit)
@@ -54,8 +50,6 @@ void ButtonWrite::create(sf::Texture &texture, sf::IntRect rect, ButtonRect spri
     newText(*text, font, this->str, size, pos);
     text_color = text_info;
     write_cursor.setPosition(text->getGlobalBounds());
-
-    cursor = sf::Cursor::Type::Text;
 }
 
 ButtonWrite::~ButtonWrite()
@@ -77,9 +71,6 @@ void ButtonWrite::draw(sf::RenderWindow &window, const sf::RenderStates &states)
         window.draw((*text), renderStates);
     if (activated && IS_DEFINED(text))
         write_cursor.draw(window, states);
-
-    if (hover && Utils::cursor_type == sf::Cursor::Type::Arrow)
-        Utils::cursor_type = cursor;
 }
 
 // ****************************************************************************

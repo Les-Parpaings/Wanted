@@ -4,7 +4,7 @@
 namespace utils {
 
     #define WINDOW_SIZE             sf::VideoMode(1920, 1080)
-    #define WINDOW_NAME             sf::String("SFML Window")
+    #define WINDOW_NAME             sf::String("Wanted")
     #define WINDOW_FPS              60
 
     #if defined(_WIN32)

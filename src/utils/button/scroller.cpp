@@ -18,8 +18,6 @@ Scroller::Scroller()
     this->bar = nullptr;
     this->left = nullptr;
     this->right = nullptr;
-
-    this->cursor = sf::Cursor::Type::Hand;
 }
 
 Scroller::~Scroller()
@@ -118,9 +116,6 @@ void Scroller::draw(sf::RenderWindow &window)
         window.draw(*sprite);
     if (IS_DEFINED(text))
         window.draw(*text);
-
-    if (hover && Utils::cursor_type == sf::Cursor::Type::Arrow)
-        Utils::cursor_type = cursor;
 }
 
 // ****************************************************************************

@@ -168,7 +168,7 @@ enum Accents {
 class Utils
 {
     public:
-        static int cursor_type;
+        static int loopValue;
 
         sf::RenderWindow window;
         sf::Event event;
@@ -189,6 +189,9 @@ class Utils
         /// \param color The color of the background. Black by default
         void clear(sf::Color color = sf::Color::Black);
 
+        bool loop();
+        void setupSignal();
+
 
         /// \brief Check if the exit button is pressed
         void getExitEvent();
@@ -198,8 +201,6 @@ class Utils
     private:
         sf::Image icon;
         sf::ContextSettings settings;
-        sf::Cursor cursor;
-        sf::Clock cursor_clock;
 
         bool exit;
 };

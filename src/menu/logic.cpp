@@ -14,6 +14,9 @@ void Menu::doLogic(Game &game, Utils &utils, WantedPart &part)
         music.stop();
         game.startNewGame(utils);
     }
+
+    if (ghostClock.getElapsedTime().asSeconds() >= 1.0f)
+        ghostDraw = false;
 }
 
 }

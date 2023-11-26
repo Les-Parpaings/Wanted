@@ -2,32 +2,20 @@
 #include "Wanted.hpp"
 #include <fstream>
 
-std::ostream &operator<<(std::ostream &flux, HeroType const &hero)
+std::ostream &operator<<(std::ostream &flux, FNAFType const &fnaf)
 {
-    switch (hero) {
-        case CAPTAIN:
-            flux << "Captain America";
+    switch (fnaf) {
+        case FREDDY:
+            flux << "Freddy";
             return flux;
-        case DEADPOOL:
-            flux << "Deadpool";
+        case BONNIE:
+            flux << "Bonnie";
             return flux;
-        case GROOT:
-            flux << "Groot";
+        case CHICA:
+            flux << "Chica";
             return flux;
-        case HULK:
-            flux << "Hulk";
-            return flux;
-        case IRONMAN:
-            flux << "Iron Man";
-            return flux;
-        case SPIDERMAN:
-            flux << "Spider Man";
-            return flux;
-        case THOR:
-            flux << "Thor";
-            return flux;
-        case WOLVERINE:
-            flux << "Wolverine";
+        case FOXY:
+            flux << "Foxy";
             return flux;
         default:
             return flux;

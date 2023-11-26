@@ -120,7 +120,7 @@ class Sounds
         sf::Sound &getSound(std::string name);
         /// \brief Play a specific sound from the list
         /// \param name The name of the sound (without the root folder and the extension)
-        void play(std::string name);
+        void play(std::string name, bool override = true);
 
         ~Sounds();
 

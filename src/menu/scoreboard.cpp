@@ -18,7 +18,7 @@ void setScoreboard(ScoreBoardValue &values, size_t newValue, ScoreBoard &list)
 
     size_t index = 0;
     for (auto &it : list) {
-        setTextString(it, std::to_string(values[index]), MID);
+        setTextString(it, std::to_string(values[index]), LEFT);
         index++;
     }
 }

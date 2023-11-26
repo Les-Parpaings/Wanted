@@ -21,6 +21,10 @@ struct Wanted
     Menu menu;
     Game game;
 
+    sf::Sprite _static;
+    sf::Music _music;
+    sf::Clock _clock;
+
     Wanted();
     void getEvent();
     void doLogic();
@@ -34,4 +38,4 @@ void saveScoreboard(ScoreBoardValue &values);
 
 }
 
-std::ostream &operator<<(std::ostream &flux, HeroType const &hero);
+std::ostream &operator<<(std::ostream &flux, FNAFType const &fnaf);

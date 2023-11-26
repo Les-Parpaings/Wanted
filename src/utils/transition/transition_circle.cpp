@@ -30,9 +30,6 @@ void TransitionCircle::draw(sf::RenderWindow &window)
 
 void TransitionCircle::doTransition()
 {
-    if (value == FADE_IN || value == FADE_OUT)
-        Utils::cursor_type = sf::Cursor::ArrowWait;
-
     if (clock.getElapsedTime().asMilliseconds() >= sf::Int32(5)) {
 
         float radius = circle.getRadius();
@@ -41,14 +38,12 @@ void TransitionCircle::doTransition()
             if (radius <= 0.0f) {
                 radius = 0.1f; // not zero because it become invisible
                 value = FADE_DONE;
-                Utils::cursor_type = sf::Cursor::Arrow;
             }
         } else if (value == FADE_OUT) {
             radius += TRANS_ADD * 5;
             if (radius >= 1920.0f) {
                 radius = 1920.0f;
                 value = FADE_OFF;
-                Utils::cursor_type = sf::Cursor::Arrow;
             }
         }
         circle.setRadius(radius);
@@ -67,8 +62,6 @@ void TransitionCircle::setAnimValue(animState new_value)
         circle.setOutlineThickness(1920.0f);
     } else if (value == FADE_OFF) {
         circle.setOutlineThickness(0.0f);
-    } else {
-        Utils::cursor_type = sf::Cursor::ArrowWait;
     }
 }
 

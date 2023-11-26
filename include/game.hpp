@@ -23,8 +23,8 @@ enum GamePart {
 
 struct GameIntro
 {
-    sf::Text chosenTitle;
-    sf::Sprite chosenSprite;
+    sf::Text _chosenTitle;
+    sf::Sprite _chosenSprite;
 
     GameIntro(utils::Utils &utils);
     void draw(utils::Utils &utils);
@@ -34,23 +34,16 @@ struct GameIntro
 
 struct GameInfo
 {
-    sf::Sprite background;
+    sf::RectangleShape _background;
+    sf::CircleShape _rec;
+    sf::Clock _recClock;
 
-    sf::Text chosenTitle;
-    sf::Sprite chosenSprite;
-
-    sf::Text timeTitle;
-    sf::Text timeText;
-
-    sf::Text scoreTitle;
-    sf::Text scoreText;
-
-    sf::Text roundTitle;
-    sf::Text roundText;
+    sf::Text _time;
+    sf::Text _round;
+    sf::Text _score;
 
     GameInfo(utils::Utils &utils);
     void draw(utils::Utils &utils);
-    void setSprite(sf::Texture &newTexture);
     void setTime(size_t newTime);
     void setScore(size_t newScore);
     void setRound(size_t newRound);
@@ -59,32 +52,36 @@ struct GameInfo
 
 struct Game
 {
-    GameInfo info;
-    GameIntro intro;
+    GameInfo _info;
+    GameIntro _intro;
+    sf::Sprite _screamer;
+    sf::Clock _screamerClock;
 
-    HeroList headList;
-    HeroList::iterator headChosen;
-    std::string nameList[HeroType::HERO_SIZE];
-    HeroType nameChosen;
+    FNAFList _headList;
+    FNAFList::iterator _headChosen;
+    std::string _nameList[FNAFType::FNAF_SIZE];
+    FNAFType _nameChosen;
 
-    size_t round;
-    RoundType roundType;
-    bool dark;
-    sf::CircleShape darkCircle;
+    size_t _round;
+    RoundType _roundType;
+    bool _dark;
+    sf::CircleShape _darkCircle;
 
-    size_t score;
+    size_t _score;
 
-    size_t time;
-    sf::Clock timeGame;
-    sf::Clock timeRound;
-    bool isEndGame;
+    size_t _time;
+    sf::Clock _timeGame;
+    sf::Clock _timeRound;
+    bool _isEndGame;
 
-    GamePart part;
+    GamePart _part;
 
-    sf::Music music;
+    sf::Music _music;
 
     Game(utils::Utils &utils);
     void getEvent(utils::Utils &utils);
+    bool getEventHead(utils::Utils &utils, FNAFList::iterator it, sf::Vector2f posMouse, bool &touched);
+    void getEventClicked(utils::Utils &utils, bool &touched);
 
     void doLogic(Menu &menu, utils::Utils &utils, WantedPart &part, ScoreBoardValue &scoreboard);
     void startNewRound(utils::Utils &utils);
@@ -93,7 +90,7 @@ struct Game
     void endGame(ScoreBoardValue &values, ScoreBoard &list);
     void doMovement();
 
-    void draw(utils::Utils &utils);
+    void draw(utils::Utils &utils, sf::Sprite &staticSprite);
     ~Game();
 };
 

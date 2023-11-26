@@ -7,7 +7,7 @@ namespace utils {
 // WINDOW
 // ****************************************************************************
 
-int Utils::cursor_type = sf::Cursor::Type::Arrow;
+int Utils::loopValue = true;
 
 Utils::Utils()
 {
@@ -42,6 +42,8 @@ Utils::Utils()
 
     //Time
     std::srand((unsigned int)(std::time(nullptr)));
+
+    this->setupSignal();
 }
 
 Utils::~Utils()
@@ -63,14 +65,6 @@ void Utils::draw()
 
     shaders.setParameter();
 
-    // Have to clock because otherwise it bug
-    if (cursor_clock.getElapsedTime().asMilliseconds() >= sf::Int32(50)) {
-        cursor.loadFromSystem(sf::Cursor::Type(cursor_type));
-        window.setMouseCursor(cursor);
-        cursor_type = sf::Cursor::Arrow;
-        cursor_clock.restart();
-    }
-
     window.display();
 }
 
@@ -79,6 +73,11 @@ void Utils::getExitEvent()
     if (event.type == sf::Event::Closed) {
         window.close();
     }
+}
+
+bool Utils::loop()
+{
+    return (this->window.isOpen() && Utils::loopValue);
 }
 
 }

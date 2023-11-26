@@ -31,6 +31,8 @@ Textures::Textures()
             err = m_texture[name].loadFromFile(path);
             if (err == false) {
                 m_texture.erase(name);
+            } else {
+                m_texture[name].setSmooth(true);
             }
 
             name.clear();

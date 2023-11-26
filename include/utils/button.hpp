@@ -69,7 +69,6 @@ class Button
         bool hover;
         bool click;
         bool hold;
-        sf::Cursor::Type cursor;
 
         // Sprite
         sf::Sprite *sprite;
