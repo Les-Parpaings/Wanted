@@ -75,10 +75,12 @@ sf::Sound &Sounds::getSound(std::string name)
     }
 }
 
-void Sounds::play(std::string name)
+void Sounds::play(std::string name, bool override)
 {
     auto it = m_sound.find(name);
     if (it != m_sound.end()) {
+        if (it->second.getStatus() == sf::SoundSource::Status::Playing && !override)
+            return;
         it->second.play();
     }
 }

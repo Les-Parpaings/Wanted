@@ -21,15 +21,25 @@ struct Menu {
     sf::Text score_title;
     ScoreBoard score_list;
 
+    sf::Sprite background;
+    sf::Text title;
+
     utils::ButtonClick start;
     utils::ButtonClick quit;
 
     sf::Music music;
 
+    bool ghostDraw;
+    size_t ghostIndex;
+    sf::Sprite ghost;
+    sf::Text ghostText;
+    sf::Clock ghostClock;
+    std::vector<std::string> ghostDialog;
+
     Menu(utils::Utils &utils, ScoreBoardValue &scoreboard);
     void getEvent(utils::Utils &utils);
     void doLogic(Game &game, utils::Utils &utils, WantedPart &part);
-    void draw(utils::Utils &utils);
+    void draw(utils::Utils &utils, sf::Sprite &staticSprite);
     ~Menu();
 };
 

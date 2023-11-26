@@ -7,8 +7,8 @@ namespace Wanted
 
 GameIntro::GameIntro(utils::Utils &utils)
 {
-    newSprite(chosenSprite, utils.textures.getTexture("none"), R_HERO, sf::Vector2f(810.0f, 540.0f), VECTOR_3);
-    newText(chosenTitle, FONT_BOLD, "Wanted", 100, sf::Vector2f(810.0f, 300.0f));
+    newSprite(_chosenSprite, utils.textures.getTexture("none"), R_ICON_LRG, sf::Vector2f(960.0f, 540.0f));
+    newText(_chosenTitle, FONT_FNAF, "Wanted", 100, sf::Vector2f(960.0f, 250.0f));
 }
 
 GameIntro::~GameIntro()
@@ -17,13 +17,13 @@ GameIntro::~GameIntro()
 
 void GameIntro::draw(utils::Utils &utils)
 {
-    utils.window.draw(chosenSprite);
-    utils.window.draw(chosenTitle);
+    utils.window.draw(_chosenSprite);
+    utils.window.draw(_chosenTitle);
 }
 
 void GameIntro::setSprite(sf::Texture &newTexture)
 {
-    chosenSprite.setTexture(newTexture);
+    _chosenSprite.setTexture(newTexture);
 }
 
 

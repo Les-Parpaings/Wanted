@@ -7,34 +7,37 @@ namespace Wanted
 
 void Game::startNewGame(Utils &utils)
 {
-    this->part = PART_GAME_NEW_ROUND;
+    this->_part = PART_GAME_NEW_ROUND;
 
-    this->headList.clear();
-    this->headChosen = this->headList.end();
+    this->_headList.clear();
+    this->_headChosen = this->_headList.end();
 
-    this->round = 0;
-    this->roundType = LINE_COLS;
-    this->score = 0;
-    this->time = 10;
+    this->_round = 0;
+    this->_roundType = LINE_COLS;
+    this->_score = 0;
+    this->_time = 100;
 
-    this->info.setRound(1);
-    this->info.setScore(0);
-    this->info.setTime(10);
+    this->_info.setRound(_round);
+    this->_info.setScore(_score);
+    this->_info.setTime(_time);
 
-    this->isEndGame = false;
+    this->_isEndGame = false;
 
-    music.play();
+    this->_music.play();
 
     startNewRound(utils);
 }
 
 void Game::endGame(ScoreBoardValue &values, ScoreBoard &list)
 {
-    this->isEndGame = true;
-    music.stop();
+    this->_screamer.setTextureRect(R_FULL_SCREEN);
+    this->_screamerClock.restart();
+
+    this->_isEndGame = true;
+    this->_music.stop();
     endRound();
 
-    setScoreboard(values, this->score, list);
+    setScoreboard(values, this->_score, list);
 }
 
 

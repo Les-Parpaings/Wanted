@@ -18,8 +18,6 @@ Button::Button()
 
     this->text = nullptr;
     this->text_color = {sf::Color::White, sf::Color::White, sf::Color::White};
-
-    this->cursor = sf::Cursor::Type::Hand;
 }
 
 Button::~Button()
@@ -45,9 +43,6 @@ void Button::draw(sf::RenderWindow &window, const sf::RenderStates &states)
         window.draw((*sprite), renderStates);
     if (IS_DEFINED(text))
         window.draw((*text), renderStates);
-
-    if (hover && Utils::cursor_type == sf::Cursor::Type::Arrow)
-        Utils::cursor_type = cursor;
 }
 
 // ****************************************************************************

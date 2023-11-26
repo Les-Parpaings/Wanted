@@ -5,36 +5,44 @@
     // IMAGE
     // ************************************************************************
 
-    #define I_CAPTAIN                   utils.textures.getTexture("captain")
-    #define I_DEADPOOL                  utils.textures.getTexture("deadpool")
-    #define I_GROOT                     utils.textures.getTexture("groot")
-    #define I_HULK                      utils.textures.getTexture("hulk")
-    #define I_IRONMAN                   utils.textures.getTexture("ironman")
-    #define I_SPIDERMAN                 utils.textures.getTexture("spiderman")
-    #define I_THOR                      utils.textures.getTexture("thor")
-    #define I_WOLVERINE                 utils.textures.getTexture("wolverine")
+    #define I_FREDDY                    utils.textures.getTexture("freddy")
+    #define I_BONNIE                    utils.textures.getTexture("bonnie")
+    #define I_CHICA                     utils.textures.getTexture("chica")
+    #define I_FOXY                      utils.textures.getTexture("foxy")
 
-    #define R_HERO                      sf::IntRect(0, 0, 128, 128)
+    #define I_SCREAMER                  utils.textures.getTexture("screamer")
+    #define I_MAIN_TITLE                utils.textures.getTexture("main_screen")
+    #define I_STATIC                    utils.textures.getTexture("static")
+    #define I_GHOST                     utils.textures.getTexture("ghost")
+
+    #define R_ICON                      sf::IntRect(0, 0, 100, 100)
+    #define R_ICON_LRG                  sf::IntRect(0, 0, 256, 256)
+
+    #define R_FULL_SCREEN               sf::IntRect(0, 4, 1280, 720)
+    #define R_GHOST                     sf::IntRect(0, 0,  200, 200)
 
     // ************************************************************************
     // FONT
     // ************************************************************************
 
-    #define FONT_REGULAR                utils.fonts.getFont("ubuntu_regular")
-    #define FONT_BOLD                   utils.fonts.getFont("ubuntu_bold")
-    #define FONT_LIGHT                  utils.fonts.getFont("ubuntu_light")
+    #define FONT_FNAF                   utils.fonts.getFont("FNAF")
 
     // ************************************************************************
     // SOUND
     // ************************************************************************
 
-    // #define SOUND_EXAMPLE            utils.sounds.getSound("dir\\sound")
+    #define SOUND_GOOD                  "FreddyLaugh"
+    #define SOUND_WRONG                 "BallonBoyHaHa"
+    #define SOUND_SCREAMER              "Screamer"
+    #define SOUND_GHOST                 "Ghost"
 
     // ************************************************************************
     // MUSIC
     // ************************************************************************
 
-    // #define MUSIC_EXAMPLE            "dir\\music"
+    #define MUSIC_MAIN_MENU             "MainMenu"
+    #define MUSIC_IN_GAME               "InGame"
+    #define MUSIC_STATIC                "Static"
 
     // ************************************************************************
     // SHADER
@@ -47,7 +55,9 @@
     // ************************************************************************
 
     #define PATH_SCOREBOARD             "assets/data/scores.txt"
-    #define PATH_HEROES                 "heroes/"
+    #define PATH_DIALOGS                "assets/data/chatGPT.txt"
+    #define PATH_ICONS                  "icons/"
+    #define PATH_ICONS_LRG              "icons_lrg/"
 
     // ************************************************************************
     // TYPEDEF
@@ -68,16 +78,12 @@
         PART_GAME
     };
 
-    enum HeroType {
-        CAPTAIN,
-        DEADPOOL,
-        GROOT,
-        HULK,
-        IRONMAN,
-        SPIDERMAN,
-        THOR,
-        WOLVERINE,
-        HERO_SIZE,
+    enum FNAFType {
+        FREDDY,
+        BONNIE,
+        CHICA,
+        FOXY,
+        FNAF_SIZE,
     };
 
     enum RoundType {
@@ -98,5 +104,5 @@
 
     typedef std::vector<size_t>                 ScoreBoardValue;
     typedef std::list<sf::Text>                 ScoreBoard;
-    typedef std::pair<sf::Sprite, HeroType>     Hero;
-    typedef std::list<Hero>                     HeroList;
+    typedef std::pair<sf::Sprite, FNAFType>     FNAF;
+    typedef std::list<FNAF>                     FNAFList;

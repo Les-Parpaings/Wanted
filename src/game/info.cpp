@@ -7,30 +7,24 @@ namespace Wanted
 
 GameInfo::GameInfo(Utils &utils)
 {
-    newSprite(background, utils.textures.getTexture("none"), sf::IntRect(0, 0, 300, 1080), sf::Vector2f(1770.0f, 540.0f));
+    this->_background.setSize(sf::Vector2f(1900.0f, 1060.0f));
+    this->_background.setPosition(10.0f, 10.0f);
+    this->_background.setFillColor(sf::Color::Transparent);
+    this->_background.setOutlineColor(sf::Color::White);
+    this->_background.setOutlineThickness(1.0f);
 
-    newSprite(chosenSprite, utils.textures.getTexture("none"), R_HERO, sf::Vector2f(1770.0f, 192.0f));
-    newText(chosenTitle, FONT_BOLD, standardToSFML("Wanted"), 60, sf::Vector2f(1770.0f, 92.0f));
+    this->_rec.setRadius(20);
+    this->_rec.setPointCount(50);
+    this->_rec.setPosition(20.0f, 20.0f);
+    this->_rec.setFillColor(sf::Color::Red);
 
-    sf::FloatRect rect(chosenTitle.getGlobalBounds());
+    newText(_round, FONT_FNAF, "", 30, sf::Vector2f(1900.0f, 40.0f));
+    newText(_time, FONT_FNAF, "", 30, sf::Vector2f(1900.0f, 80.0f));
+    newText(_score, FONT_FNAF, "", 30, sf::Vector2f(20.0f, 1050.0f));
 
-    newText(timeTitle, FONT_BOLD, "", 50, sf::Vector2f(rect.left, 500.0f));
-    newText(timeText, FONT_REGULAR, "", 40, sf::Vector2f(rect.left, 550.0f));
-
-    newText(roundTitle, FONT_BOLD, "", 50, sf::Vector2f(rect.left, 700.0f));
-    newText(roundText, FONT_REGULAR, "", 40, sf::Vector2f(rect.left, 750.0f));
-
-    newText(scoreTitle, FONT_BOLD, "", 50, sf::Vector2f(rect.left, 900.0f));
-    newText(scoreText, FONT_REGULAR, "", 40, sf::Vector2f(rect.left, 950.0f));
-
-
-    setTextString(timeTitle, "Time", LEFT);
-    setTextString(roundTitle, "Round", LEFT);
-    setTextString(scoreTitle, "Score", LEFT);
-
-    setTextString(timeText, "30s", LEFT);
-    setTextString(roundText, "0", LEFT);
-    setTextString(scoreText, "00000", LEFT);
+    utils::setTextString(_round, "Night 1", utils::RIGHT);
+    utils::setTextString(_time, "00:00", utils::RIGHT);
+    utils::setTextString(_score, "score: 0", utils::LEFT);
 }
 
 GameInfo::~GameInfo()
@@ -39,39 +33,48 @@ GameInfo::~GameInfo()
 
 void GameInfo::draw(utils::Utils &utils)
 {
-    utils.window.draw(background);
+    utils.window.draw(_background);
+    if (_recClock.getElapsedTime().asSeconds() >= 1.0f) {
+        if (_recClock.getElapsedTime().asSeconds() >= 2.0f) {
+            _recClock.restart();
+        }
+        utils.window.draw(_rec);
+    }
 
-    utils.window.draw(chosenSprite);
-    utils.window.draw(chosenTitle);
-
-    utils.window.draw(roundTitle);
-    utils.window.draw(roundText);
-
-    utils.window.draw(scoreTitle);
-    utils.window.draw(scoreText);
-
-    utils.window.draw(timeTitle);
-    utils.window.draw(timeText);
-}
-
-void GameInfo::setSprite(sf::Texture &newTexture)
-{
-    chosenSprite.setTexture(newTexture);
+    utils.window.draw(_round);
+    utils.window.draw(_time);
+    utils.window.draw(_score);
 }
 
 void GameInfo::setTime(size_t newTime)
 {
-    setTextString(timeText, std::to_string(newTime), LEFT);
+    int seconds = newTime % 60;
+    int minutes = newTime / 60;
+
+    std::string secondsStr = "";
+    if (seconds < 10)
+        secondsStr += "0";
+    secondsStr += std::to_string(seconds);
+
+    std::string minutesStr = "";
+    if (minutes < 10)
+        minutesStr += "0";
+    minutesStr += std::to_string(minutes);
+
+    std::string str = minutesStr + ":" + secondsStr;
+    setTextString(this->_time, str, RIGHT);
 }
 
 void GameInfo::setScore(size_t newScore)
 {
-    setTextString(scoreText, std::to_string(newScore), LEFT);
+    std::string str = "score: " + std::to_string(newScore);
+    setTextString(this->_score, str, LEFT);
 }
 
 void GameInfo::setRound(size_t newRound)
 {
-    setTextString(roundText, std::to_string(newRound), LEFT);
+    std::string str = "Night " + std::to_string(newRound);
+    setTextString(this->_round, str, RIGHT);
 }
 
 
