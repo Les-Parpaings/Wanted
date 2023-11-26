@@ -33,7 +33,7 @@ Utils::Utils()
 
     //Window
     settings.antialiasingLevel = 8;
-    window.create(window_size, window_name, sf::Style::Fullscreen, settings);
+    window.create(window_size, window_name, sf::Style::Default, settings);
     icon.loadFromFile(PATH_ICON);
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     window.setFramerateLimit(window_fps);
