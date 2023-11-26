@@ -15,7 +15,7 @@ void Menu::doLogic(Game &game, Utils &utils, WantedPart &part)
         game.startNewGame(utils);
     }
 
-    if (ghostClock.getElapsedTime().asSeconds() >= 1.0f)
+    if (ghostClock.getElapsedTime().asSeconds() >= 5.0f)
         ghostDraw = false;
 }
 
