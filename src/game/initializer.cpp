@@ -15,7 +15,7 @@ void Game::startNewGame(Utils &utils)
     this->_round = 0;
     this->_roundType = LINE_COLS;
     this->_score = 0;
-    this->_time = 100;
+    this->_time = 10;
 
     this->_info.setRound(_round);
     this->_info.setScore(_score);

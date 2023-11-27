@@ -29,7 +29,7 @@ void Game::getEventClicked(utils::Utils &utils, bool &touched)
         utils.sounds.play(SOUND_GOOD);
         endRound();
     } else {
-        if (_time < 5) {
+        if (_time <= 5) {
             _time = 0;
         } else {
             _time -= 5;
